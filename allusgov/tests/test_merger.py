@@ -1,8 +1,6 @@
 """Tests for provenance tracking across sequential tree merges."""
 
 import logging
-from io import StringIO
-
 from bigtree import Node
 
 from allusgov.exporter.exporter import TextExporter
@@ -61,15 +59,14 @@ def test_provenance_survives_sequential_merges_and_text_export(tmp_path):
     assert agency.get_attr("sources") == ["samgov", "opmgov", "usagov"]
     assert lab.get_attr("sources") == ["opmgov", "usagov"]
 
-    output = StringIO()
     exporter = TextExporter(
         logger=logger,
         source="merged",
         tree=merged,
         data_dir=str(tmp_path),
     )
-    exporter.print_tree(merged, "merged", output)
-    rendered = output.getvalue()
+    exporter.export()
+    rendered = (tmp_path / "merged" / "merged.txt").read_text(encoding="utf8")
 
     assert " - samgov, opmgov, usagov" in rendered
     assert " - opmgov, usagov" in rendered
