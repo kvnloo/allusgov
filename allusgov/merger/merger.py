@@ -47,6 +47,8 @@ class Merger:
         """Record the source contributing each node without duplicating entries."""
         for org in levelorder_iter(tree):
             org = cast(Node, org)
+            if org.get_attr(source_name) is None:
+                continue
             sources = list(org.get_attr("sources") or [])
             if source_name not in sources:
                 sources.append(source_name)
