@@ -17,7 +17,7 @@ Tracked via registry PR https://github.com/kvnloo/oss-factory/pull/191 (provisio
 - Maintainer-reported requirement: https://github.com/CivicActions/allusgov/issues/25 (source provenance during merged government directories).
 - Source: `civic/provenance-25` @ `5f9dac8cc750fb95ebf6b28813500bab83adc157`.
 - Regression: sequential three-source merge; text, JSON, CSV assertions committed. **Full native tests not run**.
-- CI: https://github.com/CivicActions/allusgov/actions/runs/39076013202 — `action_required`, **zero jobs**; requires upstream approval to execute.
+- CI: https://github.com/CivicActions/allusgov/actions/runs/39076013202 — `action_required`, **zero jobs**, not green. Requested optional maintainer workflow approval once on the existing PR: https://github.com/CivicActions/allusgov/pull/38#issuecomment-6243118440.
 - Gate: execute Python 3.12 `uv sync`, `uv run pytest`, full configured lint; resolve any regression and CI comments on **the same origin PR**.
 - Next: source-level test integrity review, request workflow approval only if necessary; mark ready only after verified checks.
 
